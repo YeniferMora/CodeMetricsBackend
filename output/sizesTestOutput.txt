@@ -1,0 +1,25 @@
+Number of lines in the file: 26
+Number of code lines: 19
+Number of comments: 6
+Number of global variables: 0
+Number of if statements: 2
+Number of for statements: 2
+Number of while statements: 2
+Number of classes: 1
+Class: MiClase (3 , 16)
+    Size: 13
+	Size (without comments): 12
+	Size (without comments and empty lines):  10
+Number of functions: 3
+Function: funcion_global (16 , 26)
+    Size: 10
+	Size (without comments): 9
+	Size (without comments and empty lines):  8
+Function: metodo1 (8 , 16)
+    Size: 8
+	Size (without comments): 8
+	Size (without comments and empty lines):  7
+Function: __init__ (5 , 8)
+    Size: 3
+	Size (without comments): 3
+	Size (without comments and empty lines):  2

@@ -1,0 +1,53 @@
+# Archivo de prueba con más clases y variables globales
+
+variable_global1 = 10
+variable_global2 = 20  # Comentario en variable global
+
+class Clase1:
+    def __init__(self):
+        self.atributo1 = 1  # Comentario en el constructor
+        if self.atributo1 == 1:
+            print("Atributo1 es 1")
+
+    def metodo1(self):
+        for i in range(5):
+            print(i)
+        while self.atributo1 < 5:
+            self.atributo1 += 1
+
+class Clase2:
+    def __init__(self):
+        self.atributo2 = 2  # Comentario en el constructor
+        if self.atributo2 == 2:
+            print("Atributo2 es 2")
+
+    def metodo2(self):
+        for j in range(3):
+            print(j)
+        while self.atributo2 < 10:
+            self.atributo2 += 2
+
+# Función global
+def funcion_global1():
+    x = 10
+    y = 20  # Comentario en la misma línea
+    if x < y:
+        print("x es menor que y")
+    for k in range(3):
+        print(k)
+    while x > 0:
+        x -= 1
+        print(x)
+
+def funcion_global2():
+    a = 5
+    b = 15  # Comentario en la misma línea
+    if a < b:
+        print("a es menor que b")
+    for m in range(2):
+        print(m)
+    while a < b:
+        a += 1
+        print(a)
+
+# Fin del archivo de prueba

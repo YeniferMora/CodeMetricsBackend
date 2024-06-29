@@ -1,0 +1,26 @@
+Number of lines in the file: 64
+Number of code lines: 42
+Number of comments: 10
+Number of global variables: 0
+Number of if statements: 1
+Number of for statements: 2
+Number of while statements: 0
+DEPENDENCY:
+os, Times used:1, Lines:[15], Used in functions:[main]
+sys, Times used:1, Lines:[19], Used in functions:[main]
+math, Times used:2, Lines:[23, 23], Used in functions:[main, main]
+json, Times used:1, Lines:[28], Used in functions:[main]
+defaultdict, Times used:1, Lines:[32], Used in functions:[main]
+namedtuple, Times used:1, Lines:[38], Used in functions:[main]
+datetime, Times used:1, Lines:[43], Used in functions:[main]
+timedelta, Times used:1, Lines:[45], Used in functions:[main]
+reduce, Times used:1, Lines:[50], Used in functions:[main]
+chain, Times used:1, Lines:[55], Used in functions:[main]
+cycle, Times used:1, Lines:[58], Used in functions:[main]
+Number of classes: 0
+Number of functions: 1
+Function: main (13 , 63)
+    Size: 50
+	Size (without comments): 42
+	Size (without comments and empty lines):  32
+Función: main - Complejidad Big(O): O(n) - Complejidad Ciclomática: 3

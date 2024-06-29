@@ -1,0 +1,13 @@
+Función: loops_with_conditionals - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 4
+Función: fibonacci - Complejidad Big(O): No calculable (Recursiva) - Complejidad Ciclomática: 3
+Función: recursive_function - Complejidad Big(O): No calculable (Recursiva) - Complejidad Ciclomática: 3
+Función: multiple_nested_loops - Complejidad Big(O): O(n^3) - Complejidad Ciclomática: 4
+Función: nested_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
+Función: mixed_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
+Función: simple_function - Complejidad Big(O): O(1) - Complejidad Ciclomática: 1
+Función: for_function - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
+Función: double_loop_with_constant_operations - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
+Función: single_loop_with_constant_operations - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
+Función: nested_conditionals_and_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 7
+Función: loop_and_constant_operations - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
+Función: while_function - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2

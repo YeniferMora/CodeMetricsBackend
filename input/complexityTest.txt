@@ -1,0 +1,97 @@
+# Entrada
+def simple_function():
+    x = 1
+    y = 2
+    return x + y
+
+def for_function(n):
+    total = 0
+    for i in range(n):
+        total += i
+    return total
+
+def while_function(n):
+    total = 0
+    i = 0
+    while i < n:
+        total += i
+        i += 1
+    return total
+
+def nested_loops(n):
+    total = 0
+    for i in range(n):
+        for j in range(i):
+            total += j
+    return total
+
+def mixed_loops(n):
+    total = 0
+    for i in range(n):
+        j = 0
+        while j < i:
+            total += j
+            j += 1
+    return total
+
+def recursive_function(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * recursive_function(n-1)
+
+def multiple_nested_loops(n):
+    total = 0
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                total += i + j + k
+    return total
+
+def loops_with_conditionals(n):
+    total = 0
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(i):
+                total += j
+    return total
+
+def nested_conditionals_and_loops(n):
+    total = 0
+    if n > 0:
+        for i in range(n):
+            if i % 2 == 0:
+                for j in range(i):
+                    total += j
+            else:
+                for k in range(i):
+                    total -= k
+    return total
+
+def loop_and_constant_operations(n):
+    total = 0
+    for i in range(n):
+        total += i
+    x = 1 + 2  # Operación constante
+    return total + x
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+def single_loop_with_constant_operations(n):
+    total = 0
+    for i in range(n):
+        total += i
+    total += 100  # Operación constante
+    return total
+
+def double_loop_with_constant_operations(n):
+    total = 0
+    for i in range(n):
+        for j in range(n):
+            total += i * j
+    total += 50  # Operación constante
+    return total

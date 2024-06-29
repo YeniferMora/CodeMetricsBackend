@@ -1,0 +1,64 @@
+# imports.py
+
+import os
+import sys
+import math
+import json
+from collections import defaultdict, namedtuple
+from datetime import datetime, timedelta
+from functools import reduce
+from itertools import chain, cycle
+
+# Usage of imported modules and functions
+def main():
+    # Using os module
+    current_directory = os.getcwd()
+    print(f"Current directory: {current_directory}")
+
+    # Using sys module
+    print(f"Python version: {sys.version}")
+
+    # Using math module
+    radius = 5
+    area = math.pi * math.pow(radius, 2)
+    print(f"Area of the circle with radius {radius}: {area}")
+
+    # Using json module
+    data = {'name': 'Alice', 'age': 30}
+    json_data = json.dumps(data)
+    print(f"JSON data: {json_data}")
+
+    # Using collections module
+    freq = defaultdict(int)
+    words = ["apple", "banana", "apple", "orange", "banana", "banana"]
+    for word in words:
+        freq[word] += 1
+    print(f"Word frequencies: {freq}")
+
+    Point = namedtuple('Point', ['x', 'y'])
+    p = Point(10, 20)
+    print(f"Point: {p}")
+
+    # Using datetime module
+    now = datetime.now()
+    print(f"Current time: {now}")
+    tomorrow = now + timedelta(days=1)
+    print(f"Tomorrow: {tomorrow}")
+
+    # Using functools module
+    numbers = [1, 2, 3, 4, 5]
+    product = reduce((lambda x, y: x * y), numbers)
+    print(f"Product of numbers: {product}")
+
+    # Using itertools module
+    letters = ['A', 'B', 'C']
+    combined = list(chain(letters, numbers))
+    print(f"Combined list: {combined}")
+
+    cycle_letters = cycle(letters)
+    for _ in range(10):
+        print(next(cycle_letters), end=' ')
+    print()
+
+if _name_ == "_main_":
+    main()

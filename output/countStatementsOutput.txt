@@ -1,0 +1,39 @@
+Number of lines in the file: 54
+Number of code lines: 43
+Number of comments: 8
+Number of global variables: 0
+Number of if statements: 4
+Number of for statements: 4
+Number of while statements: 4
+Number of classes: 2
+Class: Clase1 (6 , 18)
+    Size: 12
+	Size (without comments): 12
+	Size (without comments and empty lines):  10
+    Functions: [__init__, metodo1]
+Class: Clase2 (18 , 31)
+    Size: 13
+	Size (without comments): 12
+	Size (without comments and empty lines):  10
+    Functions: [__init__, metodo2]
+Number of functions: 6
+Function: metodo2 (24 , 31)
+    Size: 7
+	Size (without comments): 6
+	Size (without comments and empty lines):  5
+Function: metodo1 (12 , 18)
+    Size: 6
+	Size (without comments): 6
+	Size (without comments and empty lines):  5
+Function: funcion_global2 (42 , 54)
+    Size: 12
+	Size (without comments): 11
+	Size (without comments and empty lines):  10
+Function: __init__ (19 , 24)
+    Size: 5
+	Size (without comments): 5
+	Size (without comments and empty lines):  4
+Function: funcion_global1 (31 , 42)
+    Size: 11
+	Size (without comments): 11
+	Size (without comments and empty lines):  10
