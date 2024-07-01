@@ -39,4 +39,9 @@ public class CodeMetricsController {
         return ResponseEntity.ok(resultCodeAnalysis);
     }
 
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Welcome to CodeMetrics API!");
+    }
+
 }
