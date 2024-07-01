@@ -15,90 +15,117 @@ import java.util.Map;
 public class CodeMetricsService {
 
     public String analyzeCode(String code) {
-        // Crear un lexer y parser para el código Python
+        // Create a lexer and parser for the Python code
         PythonLexer lexer = new PythonLexer(CharStreams.fromString(code));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         PythonParser parser = new PythonParser(tokens);
         ParseTree tree = parser.file_input();
 
-        // Crear un listener para analizar el código
+        // Create a listener to analyze the code
         PythonToAnalysis listener = new PythonToAnalysis(code);
         listener.countCommentsAndLines(tokens);
 
-        // Caminar el árbol de análisis
+        // Walk the parse tree
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(listener, tree);
 
-        // Generar el resultado del análisis en JSON
+        // Generate the analysis result in JSON
         JSONObject result = new JSONObject();
-        result.put("numero_lineas", listener.getNumberLines());
-        result.put("numero_lineas_codigo", listener.getNumberCodeLines());
-        result.put("numero_comentarios", listener.getNumberComments());
-        result.put("numero_variables_globales", listener.getNumberGlobalVariables());
-        result.put("numero_declaraciones_if", listener.getNumberIf());
-        result.put("numero_bucles_for", listener.getNumberFor());
-        result.put("numero_bucles_while", listener.getNumberWhile());
-        result.put("numero_clases", listener.getNumberClasses());
-
-        // Añadir resultados de clases
-        JSONArray clasesArray = new JSONArray();
+        result.put("number_of_lines", listener.getNumberLines());
+        result.put("number_of_code_lines", listener.getNumberCodeLines());
+        result.put("number_of_comments", listener.getNumberComments());
+        result.put("number_of_comments_per_line", listener.getNumberCommentsPerCodeline());
+        result.put("number_of_global_variables", listener.getNumberGlobalVariables());
+        result.put("number_of_if_statements", listener.getNumberIf());
+        result.put("number_of_for_loops", listener.getNumberFor());
+        result.put("number_of_while_loops", listener.getNumberWhile());
+        result.put("number_of_classes", listener.getNumberClasses());
+        result.put("descriptionByGemini", listener.getApiResponse());
+        //result.put("dataToSmellCodeAnalysis", listener.getDataToSmellCodeAnalysis());
+        String apiResponse = "";
+        /*try {
+            String prompt = "A text  with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + listener.getDataToSmellCodeAnalysis();
+            System.out.println("analysis: "+prompt);
+            apiResponse = GeminiAPI.callGeminiAPI(prompt);
+            System.out.println(apiResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        //result.put("smell_code_analysis", apiResponse);
+        // Add class results
+        JSONArray classesArray = new JSONArray();
         for (Map.Entry<String, List<Integer>> entry : listener.getClassMetrics().entrySet()) {
             String className = entry.getKey();
             List<Integer> classData = entry.getValue();
-            JSONObject claseObject = new JSONObject();
-            claseObject.put("nombre", className);
-            claseObject.put("linea_inicio", classData.get(0));
-            claseObject.put("linea_fin", classData.get(1));
-            claseObject.put("tamano", classData.get(2));
-            claseObject.put("tamano_sin_comentarios", classData.get(3));
-            claseObject.put("tamano_sin_comentarios_ni_lineas_vacias", classData.get(4));
+            JSONObject classObject = new JSONObject();
+            classObject.put("name", className);
+            classObject.put("start_line", classData.get(0));
+            classObject.put("end_line", classData.get(1));
+            classObject.put("size", classData.get(2));
+            classObject.put("size_without_comments", classData.get(3));
+            classObject.put("size_without_comments_or_empty_lines", classData.get(4));
             if (listener.getClassFunctions().containsKey(className)) {
-                claseObject.put("funciones", listener.getClassFunctions().get(className));
+                classObject.put("functions", listener.getClassFunctions().get(className));
             }
-            clasesArray.put(claseObject);
+            classesArray.put(classObject);
         }
-        result.put("clases", clasesArray);
+        result.put("classes", classesArray);
 
-        // Añadir resultados de funciones
-        result.put("numero_funciones", listener.getNumberFunctions());
-        JSONArray funcionesArray = new JSONArray();
+        // Add function results
+        result.put("number_of_functions", listener.getNumberFunctions());
+        JSONArray functionsArray = new JSONArray();
         for (Map.Entry<String, List<Integer>> entry : listener.getFunctionMetrics().entrySet()) {
             String functionName = entry.getKey();
             List<Integer> functionData = entry.getValue();
-            JSONObject funcionObject = new JSONObject();
-            funcionObject.put("nombre", functionName);
-            funcionObject.put("linea_inicio", functionData.get(0));
-            funcionObject.put("linea_fin", functionData.get(1));
-            funcionObject.put("tamano", functionData.get(2));
-            funcionObject.put("tamano_sin_comentarios", functionData.get(3));
-            funcionObject.put("tamano_sin_comentarios_ni_lineas_vacias", functionData.get(4));
-            funcionesArray.put(funcionObject);
+            JSONObject functionObject = new JSONObject();
+            functionObject.put("name", functionName);
+            functionObject.put("start_line", functionData.get(0));
+            functionObject.put("end_line", functionData.get(1));
+            functionObject.put("size", functionData.get(2));
+            functionObject.put("size_without_comments", functionData.get(3));
+            functionObject.put("size_without_comments_or_empty_lines", functionData.get(4));
+            functionsArray.put(functionObject);
         }
-        result.put("funciones", funcionesArray);
+        result.put("functions", functionsArray);
 
-        // Añadir complejidad de funciones
-        JSONArray complejidadArray = new JSONArray();
+        // Add function complexity
+        JSONArray complexityArray = new JSONArray();
         for (Map.Entry<String, PythonToAnalysis.ComplexityInfo> entry : listener.getFunctionComplexity().entrySet()) {
-            JSONObject complejidadObject = new JSONObject();
-            complejidadObject.put("nombre", entry.getKey());
-            complejidadObject.put("complejidad_big_o", entry.getValue().getBigOComplexity());
-            complejidadObject.put("complejidad_ciclomatica", entry.getValue().getCyclomaticComplexity());
-            complejidadArray.put(complejidadObject);
+            JSONObject complexityObject = new JSONObject();
+            complexityObject.put("name", entry.getKey());
+            complexityObject.put("big_o_complexity", entry.getValue().getBigOComplexity());
+            complexityObject.put("cyclomatic_complexity", entry.getValue().getCyclomaticComplexity());
+            complexityArray.put(complexityObject);
         }
-        result.put("complejidades_funciones", complejidadArray);
+        result.put("function_complexities", complexityArray);
 
-        // Añadir dependencias
-        JSONArray dependenciasArray = new JSONArray();
+        // Add dependencies
+        JSONArray dependenciesArray = new JSONArray();
         for (PythonToAnalysis.Dependencia dependency : listener.getDependences()) {
-            JSONObject dependenciaObject = new JSONObject();
-            dependenciaObject.put("nombre", dependency.getName());
-            dependenciaObject.put("veces_usada", dependency.getTimesUsed());
-            dependenciaObject.put("lineas_usadas", dependency.getLinesUsed());
-            dependenciaObject.put("usada_en_funciones", dependency.getFuncUsed());
-            dependenciasArray.put(dependenciaObject);
+            JSONObject dependencyObject = new JSONObject();
+            dependencyObject.put("name", dependency.getName());
+            dependencyObject.put("times_used", dependency.getTimesUsed());
+            dependencyObject.put("lines_used", dependency.getLinesUsed());
+            dependencyObject.put("used_in_functions", dependency.getFuncUsed());
+            dependenciesArray.put(dependencyObject);
         }
-        result.put("dependencias", dependenciasArray);
+        result.put("dependencies", dependenciesArray);
 
+        return result.toString();
+    }
+
+    public String smellCodeAnalysis(String metricsResult) {
+        String apiResponse = "";
+        JSONObject result = new JSONObject();
+        try {
+            String prompt = "A text  with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + metricsResult;
+            System.out.println("analysis: "+prompt);
+            apiResponse = GeminiAPI.callGeminiAPI(prompt);
+            System.out.println(apiResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        result.put("smell_code_analysis", apiResponse);
         return result.toString();
     }
 }

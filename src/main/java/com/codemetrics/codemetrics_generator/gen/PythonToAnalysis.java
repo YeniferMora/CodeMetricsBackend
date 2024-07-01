@@ -25,6 +25,8 @@ public class PythonToAnalysis extends PythonParserBaseListener {
     private List<String> lines;
     private String currentClass = null;
 
+    private String apiResponse = "";
+
     // Diccionario para almacenar datos de clases y funciones
     private Map<String, List<Integer>> functionMetrics = new HashMap<>();
     private Map<String, List<Integer>> classMetrics = new HashMap<>();
@@ -86,6 +88,14 @@ public class PythonToAnalysis extends PythonParserBaseListener {
 
     @Override
     public void enterFile_input(PythonParser.File_inputContext ctx) {
+        try {
+            String prompt = "Make a really brief description of the following python code: " + ctx.getText(); // Or extract this from the context
+            System.out.println("calling api with: "+prompt);
+            apiResponse = GeminiAPI.callGeminiAPI(prompt);
+            System.out.println(apiResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         numberLines = ctx.getStop().getLine();
     }
 
@@ -433,5 +443,52 @@ public class PythonToAnalysis extends PythonParserBaseListener {
 
     public Map<String, ComplexityInfo> getFunctionComplexity() {
         return functionComplexity;
+    }
+
+    public String getApiResponse() {
+        return apiResponse;
+    }
+
+    public int getNumberCommentsPerCodeline(){
+        return numberCodeLines / numberComments;
+    }
+
+    public String getDataToSmellCodeAnalysis(){
+        StringBuilder results = new StringBuilder();
+        results.append("Number of lines in the file: " + numberLines + "\n");
+        results.append("Number of code lines: " + numberCodeLines + "\n");
+        results.append("Number of comments: " + numberComments + "\n");
+        results.append("Number of global variables: " + numberGlobalVariables + "\n");
+        results.append("Number of if statements: " + numberIf + "\n");
+        results.append("Number of for statements: " + numberFor + "\n");
+        results.append("Number of while statements: " + numberWhile + "\n");
+        results.append("DEPENDENCIES:\n");
+        for (int i = 0; i < dependencias.size(); i++) {
+            results.append(dependencias.get(i).getName()+", Times used:"+dependencias.get(i).getTimesUsed()+", Lines:"+dependencias.get(i).getLinesUsed()+", Used in functions:"+dependencias.get(i).getFuncUsed()+"\n");
+        }
+        // Imprimir resultados de clases
+        results.append("Number of classes: " + numberClasses + "\n");
+        for (Map.Entry<String, List<Integer>> entry : classMetrics.entrySet()) {
+            String className = entry.getKey();
+            List<Integer> classData = entry.getValue();
+            results.append("Class: " + className + " (" + classData.get(0) + " , " + classData.get(1) +")\n");
+            results.append("    Size: " + classData.get(2) + "\n\tSize (without comments): " + classData.get(3) + "\n\tSize (without comments and empty lines):  " + classData.get(4) + "\n");
+            if (classFunctions.containsKey(className)) {
+                results.append("    Functions: " + classFunctions.get(className) + "\n");
+            }
+        }
+        // Imprimir resultados de funciones
+        results.append("Number of functions: " + numberFunctions + "\n");
+        for (Map.Entry<String, List<Integer>> entry : functionMetrics.entrySet()) {
+            String functionName = entry.getKey();
+            List<Integer> functionData = entry.getValue();
+            results.append("Function: " + functionName + " (" + functionData.get(0) + " , " + functionData.get(1) +")\n");
+            results.append("    Size: " + functionData.get(2) + "\n\tSize (without comments): " + functionData.get(3) + "\n\tSize (without comments and empty lines):  " + functionData.get(4) + "\n");
+        }
+        // Imprimir complejidad de funciones
+        for (Map.Entry<String, ComplexityInfo> entry : functionComplexity.entrySet()) {
+            results.append("Función: "+entry.getKey()+" - Complejidad Big(O): "+entry.getValue().bigOComplexity+" - Complejidad Ciclomática: "+entry.getValue().cyclomaticComplexity + "\n");
+        }
+        return results.toString();
     }
 }

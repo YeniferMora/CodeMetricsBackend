@@ -11,10 +11,15 @@ public class CodeMetricsController {
 
     @Autowired
     private CodeMetricsService codeMetricsService;
-
     @PostMapping("/analyze")
     public ResponseEntity<String> analyzeCode(@RequestBody String code) {
         String result = codeMetricsService.analyzeCode(code);
         return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/smellCodeAnalysis")
+    public ResponseEntity<String> getResultByGemini(@RequestBody String metricsResult) {
+        String resultCodeAnalysis = codeMetricsService.smellCodeAnalysis(metricsResult);
+        return ResponseEntity.ok(resultCodeAnalysis);
     }
 }
