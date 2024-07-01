@@ -1,5 +1,6 @@
 package com.codemetrics.codemetrics_generator.service;
 
+import com.codemetrics.codemetrics_generator.utils.SanitizeTXT;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -40,19 +41,6 @@ public class CodeMetricsService {
         result.put("number_of_for_loops", listener.getNumberFor());
         result.put("number_of_while_loops", listener.getNumberWhile());
         result.put("number_of_classes", listener.getNumberClasses());
-        result.put("descriptionByGemini", listener.getApiResponse());
-        //result.put("dataToSmellCodeAnalysis", listener.getDataToSmellCodeAnalysis());
-        String apiResponse = "";
-        /*try {
-            String prompt = "A text  with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + listener.getDataToSmellCodeAnalysis();
-            System.out.println("analysis: "+prompt);
-            apiResponse = GeminiAPI.callGeminiAPI(prompt);
-            System.out.println(apiResponse);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        //result.put("smell_code_analysis", apiResponse);
-        // Add class results
         JSONArray classesArray = new JSONArray();
         for (Map.Entry<String, List<Integer>> entry : listener.getClassMetrics().entrySet()) {
             String className = entry.getKey();
@@ -114,18 +102,32 @@ public class CodeMetricsService {
         return result.toString();
     }
 
-    public String smellCodeAnalysis(String metricsResult) {
+    public String smellCodeAnalysis(String metricsResult, String apiKey) {
         String apiResponse = "";
         JSONObject result = new JSONObject();
         try {
-            String prompt = "A text  with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + metricsResult;
+            String prompt = "A JSON Object with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + SanitizeTXT.escapeSpecialCharacters(metricsResult) ;
             System.out.println("analysis: "+prompt);
-            apiResponse = GeminiAPI.callGeminiAPI(prompt);
-            System.out.println(apiResponse);
+            apiResponse = GeminiAPI.callGeminiAPI(prompt, apiKey);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         result.put("smell_code_analysis", apiResponse);
+        return result.toString();
+    }
+
+    public String codeDescription(String code, String apiKey) {
+        String apiResponse = "";
+        JSONObject result = new JSONObject();
+        try {
+            String prompt = "Make a really brief description of the following python code: " + SanitizeTXT.escapeSpecialCharacters(code); // Or extract this from the context
+            apiResponse = GeminiAPI.callGeminiAPI(prompt, apiKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        result.put("descriptionByGemini", apiResponse);
         return result.toString();
     }
 }

@@ -1,5 +1,6 @@
 package com.codemetrics.codemetrics_generator.gen;
 /** Creates an analysis */
+import com.codemetrics.codemetrics_generator.utils.SanitizeTXT;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
@@ -88,14 +89,6 @@ public class PythonToAnalysis extends PythonParserBaseListener {
 
     @Override
     public void enterFile_input(PythonParser.File_inputContext ctx) {
-        try {
-            String prompt = "Make a really brief description of the following python code: " + ctx.getText(); // Or extract this from the context
-            System.out.println("calling api with: "+prompt);
-            apiResponse = GeminiAPI.callGeminiAPI(prompt);
-            System.out.println(apiResponse);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         numberLines = ctx.getStop().getLine();
     }
 
@@ -324,42 +317,6 @@ public class PythonToAnalysis extends PythonParserBaseListener {
     public void exitFile_input(PythonParser.File_inputContext ctx) {
         calculateCodeLines();
 
-        System.out.println("Number of lines in the file: " + numberLines);
-        System.out.println("Number of code lines: " + numberCodeLines);
-        System.out.println("Number of comments: " + numberComments);
-        System.out.println("Number of global variables: " + numberGlobalVariables);
-        System.out.println("Number of if statements: " + numberIf);
-        System.out.println("Number of for statements: " + numberFor);
-        System.out.println("Number of while statements: " + numberWhile);
-        System.out.println("DEPENDENCY:");
-        for (int i = 0; i < dependencias.size(); i++) {
-            System.out.println(dependencias.get(i).getName()+", Times used:"+dependencias.get(i).getTimesUsed()+", Lines:"+dependencias.get(i).getLinesUsed()+", Used in functions:"+dependencias.get(i).getFuncUsed());
-            //for (int j = 0; j < dependencias.get(j).getLinesUsed().size(); j++){
-            //System.out.println();
-            //}
-        }
-        // Imprimir resultados de clases
-        System.out.println("Number of classes: " + numberClasses);
-        for (Map.Entry<String, List<Integer>> entry : classMetrics.entrySet()) {
-            String className = entry.getKey();
-            List<Integer> classData = entry.getValue();
-            System.out.println("Class: " + className + " (" + classData.get(0) + " , " + classData.get(1) +")");
-            System.out.println("    Size: " + classData.get(2) + "\n\tSize (without comments): " + classData.get(3) + "\n\tSize (without comments and empty lines):  " + classData.get(4));
-            if (classFunctions.containsKey(className)) {
-                System.out.println("    Functions: " + classFunctions.get(className));
-            }
-        }
-
-        System.out.println("Number of functions: " + numberFunctions);
-        for (Map.Entry<String, List<Integer>> entry : functionMetrics.entrySet()) {
-            String functionName = entry.getKey();
-            List<Integer> functionData = entry.getValue();
-            System.out.println("Function: " + functionName + " (" + functionData.get(0) + " , " + functionData.get(1) +")");
-            System.out.println("    Size: " + functionData.get(2) + "\n\tSize (without comments): " + functionData.get(3) + "\n\tSize (without comments and empty lines):  " + functionData.get(4));
-        }
-        for (Map.Entry<String, ComplexityInfo> entry : functionComplexity.entrySet()) {
-            System.out.println("Función: "+entry.getKey()+" - Complejidad Big(O): "+entry.getValue().bigOComplexity+" - Complejidad Ciclomática: "+entry.getValue().cyclomaticComplexity);
-        }
     }
 
     @Override public void enterImport_name(PythonParser.Import_nameContext ctx) {
