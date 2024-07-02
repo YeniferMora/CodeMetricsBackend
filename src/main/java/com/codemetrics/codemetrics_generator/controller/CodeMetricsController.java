@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/codemetrics")
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = {"http://localhost:3000","https://codemetrics-virid.vercel.app"})
 public class CodeMetricsController {
 
     private final CodeMetricsConfigProperties codeMetricsConfigProperties;
