@@ -1,7 +1,5 @@
 # CodeMetricsBackend
 
-# CodeMetricsBackend
-
 Codemetrics es una aplicación que analiza automáticamente código fuente escrito en Python para recopilar estadísticas y métricas clave. Utiliza ANTLR para obtener las métricas y se conecta con la API de Gemini para generar análisis y recomendaciones basados en esas métricas y una descripción del código fuente.
 
 ## Características
