@@ -1,13 +1,187 @@
-Función: loops_with_conditionals - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 4
-Función: fibonacci - Complejidad Big(O): No calculable (Recursiva) - Complejidad Ciclomática: 3
-Función: recursive_function - Complejidad Big(O): No calculable (Recursiva) - Complejidad Ciclomática: 3
-Función: multiple_nested_loops - Complejidad Big(O): O(n^3) - Complejidad Ciclomática: 4
-Función: nested_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
-Función: mixed_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
-Función: simple_function - Complejidad Big(O): O(1) - Complejidad Ciclomática: 1
-Función: for_function - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
-Función: double_loop_with_constant_operations - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 3
-Función: single_loop_with_constant_operations - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
-Función: nested_conditionals_and_loops - Complejidad Big(O): O(n^2) - Complejidad Ciclomática: 7
-Función: loop_and_constant_operations - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
-Función: while_function - Complejidad Big(O): O(n) - Complejidad Ciclomática: 2
+{
+    "number_of_global_variables": 0,
+    "functions": [
+        {
+            "size_without_comments": 8,
+            "size": 8,
+            "name": "loops_with_conditionals",
+            "start_line": 51,
+            "size_without_comments_or_empty_lines": 7,
+            "end_line": 59
+        },
+        {
+            "size_without_comments": 6,
+            "size": 6,
+            "name": "fibonacci",
+            "start_line": 78,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 84
+        },
+        {
+            "size_without_comments": 6,
+            "size": 6,
+            "name": "recursive_function",
+            "start_line": 37,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 43
+        },
+        {
+            "size_without_comments": 8,
+            "size": 8,
+            "name": "multiple_nested_loops",
+            "start_line": 43,
+            "size_without_comments_or_empty_lines": 7,
+            "end_line": 51
+        },
+        {
+            "size_without_comments": 7,
+            "size": 7,
+            "name": "nested_loops",
+            "start_line": 21,
+            "size_without_comments_or_empty_lines": 6,
+            "end_line": 28
+        },
+        {
+            "size_without_comments": 9,
+            "size": 9,
+            "name": "mixed_loops",
+            "start_line": 28,
+            "size_without_comments_or_empty_lines": 8,
+            "end_line": 37
+        },
+        {
+            "size_without_comments": 5,
+            "size": 5,
+            "name": "simple_function",
+            "start_line": 2,
+            "size_without_comments_or_empty_lines": 4,
+            "end_line": 7
+        },
+        {
+            "size_without_comments": 6,
+            "size": 6,
+            "name": "for_function",
+            "start_line": 7,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 13
+        },
+        {
+            "size_without_comments": 6,
+            "size": 6,
+            "name": "double_loop_with_constant_operations",
+            "start_line": 91,
+            "size_without_comments_or_empty_lines": 6,
+            "end_line": 97
+        },
+        {
+            "size_without_comments": 7,
+            "size": 7,
+            "name": "single_loop_with_constant_operations",
+            "start_line": 84,
+            "size_without_comments_or_empty_lines": 6,
+            "end_line": 91
+        },
+        {
+            "size_without_comments": 12,
+            "size": 12,
+            "name": "nested_conditionals_and_loops",
+            "start_line": 59,
+            "size_without_comments_or_empty_lines": 11,
+            "end_line": 71
+        },
+        {
+            "size_without_comments": 7,
+            "size": 7,
+            "name": "loop_and_constant_operations",
+            "start_line": 71,
+            "size_without_comments_or_empty_lines": 6,
+            "end_line": 78
+        },
+        {
+            "size_without_comments": 8,
+            "size": 8,
+            "name": "while_function",
+            "start_line": 13,
+            "size_without_comments_or_empty_lines": 7,
+            "end_line": 21
+        }
+    ],
+    "number_of_comments_per_line": 21,
+    "number_of_classes": 0,
+    "classes": [],
+    "number_of_lines": 97,
+    "function_complexities": [
+        {
+            "name": "loops_with_conditionals",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 4
+        },
+        {
+            "name": "fibonacci",
+            "big_o_complexity": "No calculable (Recursiva)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "recursive_function",
+            "big_o_complexity": "No calculable (Recursiva)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "multiple_nested_loops",
+            "big_o_complexity": "O(n^3)",
+            "cyclomatic_complexity": 4
+        },
+        {
+            "name": "nested_loops",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "mixed_loops",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "simple_function",
+            "big_o_complexity": "O(1)",
+            "cyclomatic_complexity": 1
+        },
+        {
+            "name": "for_function",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "double_loop_with_constant_operations",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "single_loop_with_constant_operations",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "nested_conditionals_and_loops",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 7
+        },
+        {
+            "name": "loop_and_constant_operations",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "while_function",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        }
+    ],
+    "number_of_code_lines": 84,
+    "number_of_functions": 13,
+    "dependencies": [],
+    "number_of_for_loops": 16,
+    "number_of_if_statements": 5,
+    "number_of_while_loops": 2,
+    "number_of_comments": 4
+}

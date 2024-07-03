@@ -1,39 +1,108 @@
-Number of lines in the file: 54
-Number of code lines: 43
-Number of comments: 8
-Number of global variables: 0
-Number of if statements: 4
-Number of for statements: 4
-Number of while statements: 4
-Number of classes: 2
-Class: Clase1 (6 , 18)
-    Size: 12
-	Size (without comments): 12
-	Size (without comments and empty lines):  10
-    Functions: [__init__, metodo1]
-Class: Clase2 (18 , 31)
-    Size: 13
-	Size (without comments): 12
-	Size (without comments and empty lines):  10
-    Functions: [__init__, metodo2]
-Number of functions: 6
-Function: metodo2 (24 , 31)
-    Size: 7
-	Size (without comments): 6
-	Size (without comments and empty lines):  5
-Function: metodo1 (12 , 18)
-    Size: 6
-	Size (without comments): 6
-	Size (without comments and empty lines):  5
-Function: funcion_global2 (42 , 54)
-    Size: 12
-	Size (without comments): 11
-	Size (without comments and empty lines):  10
-Function: __init__ (19 , 24)
-    Size: 5
-	Size (without comments): 5
-	Size (without comments and empty lines):  4
-Function: funcion_global1 (31 , 42)
-    Size: 11
-	Size (without comments): 11
-	Size (without comments and empty lines):  10
+{
+    "number_of_global_variables": 0,
+    "functions": [
+        {
+            "size_without_comments": 6,
+            "size": 7,
+            "name": "metodo2",
+            "start_line": 24,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 31
+        },
+        {
+            "size_without_comments": 6,
+            "size": 6,
+            "name": "metodo1",
+            "start_line": 12,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 18
+        },
+        {
+            "size_without_comments": 11,
+            "size": 12,
+            "name": "funcion_global2",
+            "start_line": 42,
+            "size_without_comments_or_empty_lines": 10,
+            "end_line": 54
+        },
+        {
+            "size_without_comments": 5,
+            "size": 5,
+            "name": "__init__",
+            "start_line": 19,
+            "size_without_comments_or_empty_lines": 4,
+            "end_line": 24
+        },
+        {
+            "size_without_comments": 11,
+            "size": 11,
+            "name": "funcion_global1",
+            "start_line": 31,
+            "size_without_comments_or_empty_lines": 10,
+            "end_line": 42
+        }
+    ],
+    "number_of_comments_per_line": 5,
+    "number_of_classes": 2,
+    "classes": [
+        {
+            "size_without_comments": 12,
+            "size": 12,
+            "functions": [
+                "__init__",
+                "metodo1"
+            ],
+            "name": "Clase1",
+            "start_line": 6,
+            "size_without_comments_or_empty_lines": 10,
+            "end_line": 18
+        },
+        {
+            "size_without_comments": 12,
+            "size": 13,
+            "functions": [
+                "__init__",
+                "metodo2"
+            ],
+            "name": "Clase2",
+            "start_line": 18,
+            "size_without_comments_or_empty_lines": 10,
+            "end_line": 31
+        }
+    ],
+    "number_of_lines": 54,
+    "function_complexities": [
+        {
+            "name": "metodo2",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "metodo1",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "funcion_global2",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 4
+        },
+        {
+            "name": "__init__",
+            "big_o_complexity": "O(1)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "funcion_global1",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 4
+        }
+    ],
+    "number_of_code_lines": 43,
+    "number_of_functions": 6,
+    "dependencies": [],
+    "number_of_for_loops": 4,
+    "number_of_if_statements": 4,
+    "number_of_while_loops": 4,
+    "number_of_comments": 8
+}

@@ -1,0 +1,178 @@
+{
+    "number_of_global_variables": 2,
+    "functions": [
+        {
+            "size_without_comments": 10,
+            "size": 11,
+            "name": "generate_primes",
+            "start_line": 28,
+            "size_without_comments_or_empty_lines": 9,
+            "end_line": 39
+        },
+        {
+            "size_without_comments": 6,
+            "size": 7,
+            "name": "fib_recursive",
+            "start_line": 57,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 64
+        },
+        {
+            "size_without_comments": 20,
+            "size": 26,
+            "name": "main",
+            "start_line": 81,
+            "size_without_comments_or_empty_lines": 13,
+            "end_line": 107
+        },
+        {
+            "size_without_comments": 3,
+            "size": 3,
+            "name": "__init__",
+            "start_line": 54,
+            "size_without_comments_or_empty_lines": 2,
+            "end_line": 57
+        },
+        {
+            "size_without_comments": 8,
+            "size": 10,
+            "name": "generate_fib_sequence",
+            "start_line": 71,
+            "size_without_comments_or_empty_lines": 7,
+            "end_line": 81
+        },
+        {
+            "size_without_comments": 14,
+            "size": 14,
+            "name": "is_prime",
+            "start_line": 14,
+            "size_without_comments_or_empty_lines": 13,
+            "end_line": 28
+        },
+        {
+            "size_without_comments": 6,
+            "size": 7,
+            "name": "fib_iterative",
+            "start_line": 64,
+            "size_without_comments_or_empty_lines": 5,
+            "end_line": 71
+        },
+        {
+            "size_without_comments": 12,
+            "size": 14,
+            "name": "prime_factors",
+            "start_line": 39,
+            "size_without_comments_or_empty_lines": 11,
+            "end_line": 53
+        }
+    ],
+    "number_of_comments_per_line": 4,
+    "number_of_classes": 2,
+    "classes": [
+        {
+            "size_without_comments": 24,
+            "size": 28,
+            "functions": [
+                "__init__",
+                "fib_recursive",
+                "fib_iterative",
+                "generate_fib_sequence"
+            ],
+            "name": "FibonacciUtils",
+            "start_line": 53,
+            "size_without_comments_or_empty_lines": 20,
+            "end_line": 81
+        },
+        {
+            "size_without_comments": 40,
+            "size": 43,
+            "functions": [
+                "__init__",
+                "is_prime",
+                "generate_primes",
+                "prime_factors"
+            ],
+            "name": "PrimeUtils",
+            "start_line": 10,
+            "size_without_comments_or_empty_lines": 36,
+            "end_line": 53
+        }
+    ],
+    "number_of_lines": 109,
+    "function_complexities": [
+        {
+            "name": "generate_primes",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 3
+        },
+        {
+            "name": "fib_recursive",
+            "big_o_complexity": "No calculable (Recursiva)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "main",
+            "big_o_complexity": "O(1)",
+            "cyclomatic_complexity": 1
+        },
+        {
+            "name": "__init__",
+            "big_o_complexity": "O(1)",
+            "cyclomatic_complexity": 1
+        },
+        {
+            "name": "generate_fib_sequence",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "is_prime",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 6
+        },
+        {
+            "name": "fib_iterative",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 2
+        },
+        {
+            "name": "prime_factors",
+            "big_o_complexity": "O(n^2)",
+            "cyclomatic_complexity": 5
+        }
+    ],
+    "number_of_code_lines": 77,
+    "number_of_functions": 9,
+    "dependencies": [
+        {
+            "name": "math",
+            "times_used": 0,
+            "used_in_functions": [],
+            "lines_used": []
+        },
+        {
+            "name": "requests",
+            "times_used": 0,
+            "used_in_functions": [],
+            "lines_used": []
+        },
+        {
+            "name": "numpy",
+            "times_used": 3,
+            "used_in_functions": [
+                "generate_primes",
+                "generate_primes",
+                "generate_primes"
+            ],
+            "lines_used": [
+                31,
+                33,
+                36
+            ]
+        }
+    ],
+    "number_of_for_loops": 4,
+    "number_of_if_statements": 9,
+    "number_of_while_loops": 2,
+    "number_of_comments": 19
+}

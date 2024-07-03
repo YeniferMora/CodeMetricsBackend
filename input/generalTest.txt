@@ -1,0 +1,108 @@
+import math  # Este módulo se importa pero no se usa
+import requests  # Este módulo se importa pero no se usa
+import numpy   # Dependencia usada
+
+# Variables globales
+global_prime_count = 0
+global_fib_count = 0
+
+#Clase para operaciones con números primos
+class PrimeUtils:
+    def __init__(self):
+        self.primes = []
+
+    def is_prime(self, n): #Verifica si un número es primo.
+        if n <= 1:
+            return False
+        if n <= 3:
+            return True
+        if n % 2 == 0 or n % 3 == 0:
+            return False
+        i = 5
+        while i * i <= n:
+            if n % i == 0 or n % (i + 2) == 0:
+                return False
+            i += 6
+        return True
+
+    def generate_primes(self, limit):
+        #Genera todos los números primos hasta un límite dado.
+        global global_prime_count
+        sieve = numpy.ones(limit, dtype=bool)
+        sieve[:2] = False
+        for i in range(2, int(numpy.sqrt(limit)) + 1):
+            if sieve[i]:
+                sieve[i*i:limit:i] = False
+        self.primes = numpy.nonzero(sieve)[0].tolist()
+        global_prime_count = len(self.primes)
+
+    def prime_factors(self, n):
+        #Encuentra los factores primos de un número. Complejidad O(n)
+        factors = []
+        for p in self.primes:
+            if p * p > n:
+                break
+            while n % p == 0:
+                factors.append(p)
+                n //= p
+        if n > 1:
+            factors.append(n)
+        return factors
+
+#Clase para operaciones con secuencias de Fibonacci
+class FibonacciUtils:
+    def __init__(self):
+        self.memo = {0: 0, 1: 1}
+
+    def fib_recursive(self, n):
+        #Calcula el n-ésimo número de Fibonacci de manera recursiva. Complejidad No calculada
+        if n in self.memo:
+            return self.memo[n]
+        self.memo[n] = self.fib_recursive(n-1) + self.fib_recursive(n-2)
+        return self.memo[n]
+
+    def fib_iterative(self, n):
+        #Calcula el n-ésimo número de Fibonacci de manera iterativa. Complejidad O(n)
+        a, b = 0, 1
+        for _ in range(n):
+            a, b = b, a + b
+        return a
+
+    def generate_fib_sequence(self, n):
+        #Genera una secuencia de Fibonacci hasta el n-ésimo término. Complejidad O(n)
+        global global_fib_count
+        sequence = [0, 1]
+        for i in range(2, n):
+            sequence.append(sequence[-1] + sequence[-2])
+        global_fib_count = len(sequence)
+        return sequence
+
+# Función fuera de las clases
+def main():
+    #Función principal para pruebas
+
+    prime_utils = PrimeUtils()
+    fib_utils = FibonacciUtils()
+
+    # Generar primos hasta 100
+    prime_utils.generate_primes(100)
+    print("Primos hasta 100:", prime_utils.primes)
+
+    # Factores primos de 84
+    factors = prime_utils.prime_factors(84)
+    print("Factores primos de 84:", factors)
+
+    # Generar secuencia de Fibonacci hasta el 10º término
+    fib_sequence = fib_utils.generate_fib_sequence(10)
+    print("Secuencia de Fibonacci hasta el 10º término:", fib_sequence)
+
+    # Calcular el 10º número de Fibonacci de manera recursiva
+    fib_10_recursive = fib_utils.fib_recursive(10)
+    print("10º número de Fibonacci (recursivo):", fib_10_recursive)
+
+    # Calcular el 10º número de Fibonacci de manera iterativa
+    fib_10_iterative = fib_utils.fib_iterative(10)
+    print("10º número de Fibonacci (iterativo):", fib_10_iterative)
+
+if __name__ == "__main__":
+    main()

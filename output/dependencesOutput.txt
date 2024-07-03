@@ -1,26 +1,144 @@
-Number of lines in the file: 64
-Number of code lines: 42
-Number of comments: 10
-Number of global variables: 0
-Number of if statements: 1
-Number of for statements: 2
-Number of while statements: 0
-DEPENDENCY:
-os, Times used:1, Lines:[15], Used in functions:[main]
-sys, Times used:1, Lines:[19], Used in functions:[main]
-math, Times used:2, Lines:[23, 23], Used in functions:[main, main]
-json, Times used:1, Lines:[28], Used in functions:[main]
-defaultdict, Times used:1, Lines:[32], Used in functions:[main]
-namedtuple, Times used:1, Lines:[38], Used in functions:[main]
-datetime, Times used:1, Lines:[43], Used in functions:[main]
-timedelta, Times used:1, Lines:[45], Used in functions:[main]
-reduce, Times used:1, Lines:[50], Used in functions:[main]
-chain, Times used:1, Lines:[55], Used in functions:[main]
-cycle, Times used:1, Lines:[58], Used in functions:[main]
-Number of classes: 0
-Number of functions: 1
-Function: main (13 , 63)
-    Size: 50
-	Size (without comments): 42
-	Size (without comments and empty lines):  32
-Función: main - Complejidad Big(O): O(n) - Complejidad Ciclomática: 3
+{
+    "number_of_global_variables": 0,
+    "functions": [
+        {
+            "size_without_comments": 42,
+            "size": 50,
+            "name": "main",
+            "start_line": 13,
+            "size_without_comments_or_empty_lines": 32,
+            "end_line": 63
+        }
+    ],
+    "number_of_comments_per_line": 4,
+    "number_of_classes": 0,
+    "classes": [],
+    "number_of_lines": 64,
+    "function_complexities": [
+        {
+            "name": "main",
+            "big_o_complexity": "O(n)",
+            "cyclomatic_complexity": 3
+        }
+    ],
+    "number_of_code_lines": 42,
+    "number_of_functions": 1,
+    "dependencies": [
+        {
+            "name": "os",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                15
+            ]
+        },
+        {
+            "name": "sys",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                19
+            ]
+        },
+        {
+            "name": "math",
+            "times_used": 2,
+            "used_in_functions": [
+                "main",
+                "main"
+            ],
+            "lines_used": [
+                23,
+                23
+            ]
+        },
+        {
+            "name": "json",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                28
+            ]
+        },
+        {
+            "name": "defaultdict",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                32
+            ]
+        },
+        {
+            "name": "namedtuple",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                38
+            ]
+        },
+        {
+            "name": "datetime",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                43
+            ]
+        },
+        {
+            "name": "timedelta",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                45
+            ]
+        },
+        {
+            "name": "reduce",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                50
+            ]
+        },
+        {
+            "name": "chain",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                55
+            ]
+        },
+        {
+            "name": "cycle",
+            "times_used": 1,
+            "used_in_functions": [
+                "main"
+            ],
+            "lines_used": [
+                58
+            ]
+        }
+    ],
+    "number_of_for_loops": 2,
+    "number_of_if_statements": 1,
+    "number_of_while_loops": 0,
+    "number_of_comments": 10
+}

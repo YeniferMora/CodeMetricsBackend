@@ -106,7 +106,7 @@ public class CodeMetricsService {
         String apiResponse = "";
         JSONObject result = new JSONObject();
         try {
-            String prompt = "A JSON Object with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, including: Code Smells: Classes and functions that are too large. High cyclomatic complexity.Excessive use of global variables.Excessive conditional statements and loops. Unused dependencies. Length of variable and function names.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies. Improving names of variables and functions.\n " + SanitizeTXT.escapeSpecialCharacters(metricsResult) ;
+            String prompt = "A JSON Object with statistics of a Python source code is provided below. Analyze this data and generate a report on code smells, Detect if There are Code Smells like: Classes and functions that are too large, High cyclomatic complexity, Excessive use of global variables, Excessive conditional statements and loops, Unused dependencies.\\n For the identified code smells, generate recommendations such as:Refactoring large classes and functions. Reducing cyclomatic complexity. Minimizing global variables. Simplifying conditional statements and loops. Managing unused dependencies.\n " + SanitizeTXT.escapeSpecialCharacters(metricsResult) ;
             System.out.println("analysis: "+prompt);
             apiResponse = GeminiAPI.callGeminiAPI(prompt, apiKey);
         } catch (Exception e) {

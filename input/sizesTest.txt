@@ -1,0 +1,28 @@
+# Archivo de prueba para análisis
+
+class MiClase:
+    def __init__(self):
+        self.atributo = 1  # Esto es un comentario
+        if self.atributo == 1:
+            print("Atributo es 1")  # Comentario en la misma línea
+
+    def metodo1(self):
+        for i in range(5):  # Comentario en bucle for
+            print(i)
+        while self.atributo < 5:
+            self.atributo += 1
+
+# Esta es una función global
+def funcion_global():
+    x = 10
+    y = 20  # Comentario en la misma línea
+    if x < y:  # Comentario en condición
+        print("x es menor que y")
+    for j in range(3):
+        print(j)
+    while x > 0:
+        x -= 1
+        # Comentario en bucle while
+        print(x)
+
+# Fin del archivo de prueba
