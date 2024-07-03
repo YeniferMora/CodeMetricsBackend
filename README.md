@@ -19,7 +19,7 @@ Codemetrics es una aplicación que analiza automáticamente código fuente escri
 1. Clona el repositorio:
 2. Configuración de la API de Gemini
 Crea un archivo secrets.properties en src/main/resources y coloca la clave:
-gemini.api-key=tu-clave-api
+gemini.gemini-api-key=tu-clave-api
 3. Compila usando maven: mvn clean package -DskipTests
 
 Ya puedes ejecutar el backend, recuerda que la clase principal se encuentra en:
