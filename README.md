@@ -14,9 +14,6 @@ Codemetrics es una aplicación que analiza automáticamente código fuente escri
 - Java 17
 - Maven 3.8.5
 
-Ya puedes ejecutar el backend, recuerda que la clase principal se encuentra en:
-src/main/java/com/codemetrics/codemetrics_generator/CodemetricsGeneratorApplication.java
-
 ## Resumen de los Endpoints.
 POST: Calcular métricas con ANTLR. Recibe código fuente Python en formato texto. https://codemetricsbackend.onrender.com/api/v1/codemetrics/analyze
 
